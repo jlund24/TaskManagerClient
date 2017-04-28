@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.student.john.taskmanagerclient.Main2Activity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:id="@+id/addEditTask1_title_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title"
+                android:textSize="12sp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:paddingTop="5dp"
+                android:textColor="@color/Black"
+                />
+
+            <EditText
+                android:id="@+id/addEditTask1_title_editTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/addEditTask1_title_textView"
+                android:layout_toRightOf="@id/addEditTask1_title_textView"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:inputType="text|textAutoCorrect|textAutoComplete"/>
+
+            </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:id="@+id/addEditTask1_dueDate_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/due_date"
+                android:textSize="12sp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:paddingTop="5dp"
+                android:layout_centerVertical="true"
+                android:textColor="@color/Black"
+                />
+
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:entries="@array/dueDateOptions"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/addEditTask1_dueDate_spinner">
+            </Spinner>
+
+            <ImageButton
+                android:id="@+id/addEditTask1_dueDate_clear"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toRightOf="@id/addEditTask1_dueDate_spinner"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone"
+                android:background="@null"
+                />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:id="@+id/addEditTask1_dueTime_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/due_time"
+                android:textSize="12sp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:paddingTop="5dp"
+                android:layout_centerVertical="true"
+                android:textColor="@color/Black"
+                />
+
+            <RadioGroup
+                android:id="@+id/addEditTask1_dueTime_radioGroup"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_centerInParent="true"
+                >
+
+                <RadioButton
+                    android:id="@+id/addEditTask1_dueTime_radioButton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/morning"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"/>
+
+                <RadioButton
+                    android:id="@+id/addEditTask1_dueTime_radioButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/afternoon"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"/>
+
+                <RadioButton
+                    android:id="@+id/addEditTask1_dueTime_radioButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/evening"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"/>
+
+                <RadioButton
+                    android:id="@+id/addEditTask1_dueTime_radioButton4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/night"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"/>
+
+            </RadioGroup>
+
+            <ImageButton
+                android:id="@+id/addEditTask1_dueTime_clear"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toRightOf="@id/addEditTask1_dueTime_radioGroup"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone"
+                android:background="@null"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:id="@+id/addEditTask1_duration_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/durationString"
+                android:textSize="12sp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:paddingTop="5dp"
+                android:textColor="@color/Black"
+                android:layout_centerVertical="true"
+                />
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/durationOptions"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/addEditTask1_duration_spinner">
+
+            </Spinner>
+
+            <ImageButton
+                android:id="@+id/addEditTask1_duration_clear"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toRightOf="@id/addEditTask1_duration_spinner"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone"
+                android:background="@null"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:id="@+id/addEditTask1_priority_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/priority"
+                android:textSize="12sp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:paddingTop="5dp"
+                android:layout_centerVertical="true"
+                android:textColor="@color/Black"
+                />
+
+            <RadioGroup
+                android:id="@+id/addEditTask1_priority_radioGroup"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_centerInParent="true"
+                >
+
+                <RadioButton
+                    android:id="@+id/addEditTask1_priority_radioButton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/low"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"/>
+
+                <RadioButton
+                    android:id="@+id/addEditTask1_priority_radioButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/med"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"/>
+
+                <RadioButton
+                    android:id="@+id/addEditTask1_priority_radioButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/high"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"/>
+
+            </RadioGroup>
+
+            <ImageButton
+                android:id="@+id/addEditTask1_priority_clear"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toRightOf="@id/addEditTask1_priority_radioGroup"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone"
+                android:background="@null"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:id="@+id/addEditTask1_timePreference_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time_preference"
+                android:textSize="12sp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:paddingTop="5dp"
+                android:layout_centerVertical="true"
+                android:textColor="@color/Black"
+                />
+
+            <RadioGroup
+                android:id="@+id/addEditTask1_timePreference_radioGroup"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_centerInParent="true"
+                >
+
+                <RadioButton
+                    android:id="@+id/addEditTask1_timePreference_radioButton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/morning"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"/>
+
+                <RadioButton
+                    android:id="@+id/addEditTask1_timePreference_radioButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/afternoon"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"/>
+
+                <RadioButton
+                    android:id="@+id/addEditTask1_timePreference_radioButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/evening"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"/>
+
+                <RadioButton
+                    android:id="@+id/addEditTask1_timePreference_radioButton4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/night"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"/>
+
+
+
+            </RadioGroup>
+
+            <ImageButton
+                android:id="@+id/addEditTask1_timePreference_clear"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toRightOf="@id/addEditTask1_timePreference_radioGroup"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone"
+                android:background="@null"
+                />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerInParent="true"
+            >
+
+            <Button
+                android:id="@+id/addEditTask1_cancelButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/cancel"/>
+
+            <Button
+                android:id="@+id/addEditTask1_saveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/save"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>

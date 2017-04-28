@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+    <TextView
+        android:id="@+id/taskListItem_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|left"
+
+        android:textColor="@color/Black"
+        android:textSize="15sp"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:id="@+id/taskListItem_dueDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="12sp"
+        android:layout_margin="10dp"/>
+
+    <ImageView
+        android:id="@+id/taskListItem_priority"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:visibility="invisible"
+        />
+
+</LinearLayout>

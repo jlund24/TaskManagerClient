@@ -1,0 +1,367 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:layout_margin="10dp"
+              tools:context="com.student.john.taskmanagerclient.AddEditTaskActivity">
+
+
+
+
+    <!--Title section-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/addEditTask_title_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title"
+            android:textSize="12sp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:paddingTop="5dp"
+            android:textColor="@color/Black"
+            />
+
+        <EditText
+            android:id="@+id/addEditTask_title_editTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/addEditTask_title_textView"
+            android:layout_toRightOf="@id/addEditTask_title_textView"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:inputType="text|textAutoCorrect|textAutoComplete"/>
+    </RelativeLayout>
+
+    <!--Due Date section-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/addEditTask_dueDate_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/due_date"
+            android:textSize="12sp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:paddingTop="5dp"
+            android:textColor="@color/Black"
+            />
+
+        <ToggleButton
+            android:id="@+id/addEditTask_dueDate_toggleButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/addEditTask_dueDate_textView"
+            android:layout_toRightOf="@id/addEditTask_dueDate_textView"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:weightSum="1"
+            />
+
+        <ToggleButton
+            android:id="@+id/addEditTask_dueDate_toggleButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/addEditTask_dueDate_toggleButton1"
+            android:layout_toRightOf="@id/addEditTask_dueDate_toggleButton1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:weightSum="1"
+            />
+
+        <Spinner
+            android:id="@+id/addEditTask_dueDate_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:entries="@array/dueDateOptions"
+            >
+
+        </Spinner>
+
+
+    </RelativeLayout>
+
+    <!--Due Time section-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/addEditTask_dueTime_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/due_time"
+            android:textSize="12sp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:paddingTop="5dp"
+            android:textColor="@color/Black"
+            />
+
+        <ToggleButton
+            android:id="@+id/addEditTask_dueTime_toggleButton1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/addEditTask_dueTime_textView"
+            android:layout_toRightOf="@id/addEditTask_dueTime_textView"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            />
+
+        <ToggleButton
+            android:id="@+id/addEditTask_dueTime_toggleButton2"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/addEditTask_dueTime_toggleButton1"
+            android:layout_toRightOf="@id/addEditTask_dueTime_toggleButton1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            />
+
+        <ToggleButton
+            android:id="@+id/addEditTask_dueTime_toggleButton3"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/addEditTask_dueTime_toggleButton2"
+            android:layout_toRightOf="@id/addEditTask_dueTime_toggleButton2"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            />
+
+        <ToggleButton
+            android:id="@+id/addEditTask_dueTime_toggleButton4"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/addEditTask_dueTime_toggleButton3"
+            android:layout_toRightOf="@id/addEditTask_dueTime_toggleButton3"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            />
+
+
+    </RelativeLayout>
+
+    <!--Duration section-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/addEditTask_duration_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/durationString"
+            android:textSize="12sp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:paddingTop="5dp"
+            android:textColor="@color/Black"
+            />
+
+        <ToggleButton
+            android:id="@+id/addEditTask_duration_toggleButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/addEditTask_duration_textView"
+            android:layout_toRightOf="@id/addEditTask_duration_textView"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:weightSum="1"
+            />
+
+        <ToggleButton
+            android:id="@+id/addEditTask_duration_toggleButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/addEditTask_duration_toggleButton1"
+            android:layout_toRightOf="@id/addEditTask_duration_toggleButton1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:weightSum="1"
+            />
+
+        <Spinner
+            android:id="@+id/addEditTask_duration_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:entries="@array/durationOptions"
+            >
+
+        </Spinner>
+
+
+    </RelativeLayout>
+
+    <!--Priority section-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/addEditTask_priority_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/priority"
+            android:textSize="12sp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:paddingTop="5dp"
+            android:textColor="@color/Black"
+            />
+
+        <ToggleButton
+            android:id="@+id/addEditTask_priority_toggleButton1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/addEditTask_priority_textView"
+            android:layout_toRightOf="@id/addEditTask_priority_textView"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:textOff="@string/low"
+            android:textOn="@string/low"/>
+
+        <ToggleButton
+            android:id="@+id/addEditTask_priority_toggleButton2"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/addEditTask_priority_toggleButton1"
+            android:layout_toRightOf="@id/addEditTask_priority_toggleButton1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:textOff="@string/med"
+            android:textOn="@string/med"/>
+
+        <ToggleButton
+            android:id="@+id/addEditTask_priority_toggleButton3"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/addEditTask_priority_toggleButton2"
+            android:layout_toRightOf="@id/addEditTask_priority_toggleButton2"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:textOff="@string/high"
+            android:textOn="@string/high"/>
+
+
+    </RelativeLayout>
+
+    <!--Time Preference section-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:id="@+id/addEditTask_timePreference_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/time_preference"
+            android:textSize="12sp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:paddingTop="5dp"
+            android:textColor="@color/Black"
+            />
+
+        <ToggleButton
+            android:id="@+id/addEditTask_timePreference_toggleButton1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/addEditTask_timePreference_textView"
+            android:layout_toRightOf="@id/addEditTask_timePreference_textView"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:textOff="@string/morning"
+            android:textOn="@string/morning"/>
+
+        <ToggleButton
+            android:id="@+id/addEditTask_timePreference_toggleButton2"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/addEditTask_timePreference_toggleButton1"
+            android:layout_toRightOf="@id/addEditTask_timePreference_toggleButton1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:textOff="@string/afternoon"
+            android:textOn="@string/afternoon"/>
+
+        <ToggleButton
+            android:id="@+id/addEditTask_timePreference_toggleButton3"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/addEditTask_timePreference_toggleButton2"
+            android:layout_toRightOf="@id/addEditTask_timePreference_toggleButton2"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:textOff="@string/evening"
+            android:textOn="@string/evening"/>
+
+        <ToggleButton
+            android:id="@+id/addEditTask_timePreference_toggleButton4"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/addEditTask_timePreference_toggleButton3"
+            android:layout_toRightOf="@id/addEditTask_timePreference_toggleButton3"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:textOff="@string/night"
+            android:textOn="@string/night"/>
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <Button
+                android:id="@+id/addEditTask_cancelButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@android:color/background_light"
+                android:text="@string/cancel"
+                android:textColor="@android:color/holo_red_dark"/>
+
+            <Button
+                android:id="@+id/addEditTask_saveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/save"
+                />
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
+

@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">TaskManagerClient</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--titles for sections of addEdit task fragment-->
+    <string name="title">Title</string>
+    <string name="due_date">Due Date</string>
+    <string name="due_time">Due Time</string>
+    <string name="durationString">Duration</string>
+    <string name="priority">Priority</string>
+    <string name="time_preference">Time\nPreference</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+
+    <!--text for options for due dates-->
+    <string-array name="dueDateOptions">
+        <item name="select">Select option</item>
+        <item name="today">Today</item>
+        <item name="tomorrow">Tomorrow</item>
+        <item name="next_3_days">Next 3 days</item>
+        <item name="by_friday">By Friday</item>
+        <item name="within_week">Within the week</item>
+        <item name="next_7_days">Next 7 days</item>
+        <item name="within_2_weeks">Within 2 weeks</item>
+        <item name="within_current_month">Within the month</item>
+        <item name="within_30_days">Within 30 days</item>
+        <item name="specific_date">Specific Date</item>
+    </string-array>
+
+
+    <!--text for options for due times-->
+    <string name="morning">M</string>
+    <string name="afternoon">A</string>
+    <string name="evening">E</string>
+    <string name="night">N</string>
+
+    <!--text for options for durationString-->
+    <string-array name="durationOptions">
+        <item name="select">Select option</item>
+        <item name="min_15">15 min</item>
+        <item name="min_30">30 min</item>
+        <item name="hr_1">1 hr</item>
+        <item name="hr_1.5">1.5 hr</item>
+        <item name="hr_2">2 hr</item>
+        <item name="hr_5">5 hr</item>
+        <item name="custom">Custom</item>
+    </string-array>
+
+    <!--text for options for priority-->
+    <string name="low">L</string>
+    <string name="med">M</string>
+    <string name="high">H</string>
+
+    <string name="title_activity_other_add_edit_task">OtherAddEditTask</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+
+</resources>

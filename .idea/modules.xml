@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/TaskManagerClient.iml" filepath="$PROJECT_DIR$/TaskManagerClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-iconify/android-iconify.iml" filepath="$PROJECT_DIR$/android-iconify/android-iconify.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-iconify-entypo/android-iconify-entypo.iml" filepath="$PROJECT_DIR$/android-iconify-entypo/android-iconify-entypo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-iconify-fontawesome/android-iconify-fontawesome.iml" filepath="$PROJECT_DIR$/android-iconify-fontawesome/android-iconify-fontawesome.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-iconify-ionicons/android-iconify-ionicons.iml" filepath="$PROJECT_DIR$/android-iconify-ionicons/android-iconify-ionicons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-iconify-material/android-iconify-material.iml" filepath="$PROJECT_DIR$/android-iconify-material/android-iconify-material.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-iconify-material-community/android-iconify-material-community.iml" filepath="$PROJECT_DIR$/android-iconify-material-community/android-iconify-material-community.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-iconify-meteocons/android-iconify-meteocons.iml" filepath="$PROJECT_DIR$/android-iconify-meteocons/android-iconify-meteocons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-iconify-sample/android-iconify-sample.iml" filepath="$PROJECT_DIR$/android-iconify-sample/android-iconify-sample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-iconify-simplelineicons/android-iconify-simplelineicons.iml" filepath="$PROJECT_DIR$/android-iconify-simplelineicons/android-iconify-simplelineicons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-iconify-typicons/android-iconify-typicons.iml" filepath="$PROJECT_DIR$/android-iconify-typicons/android-iconify-typicons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-iconify-weathericons/android-iconify-weathericons.iml" filepath="$PROJECT_DIR$/android-iconify-weathericons/android-iconify-weathericons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/joda-time-2.9.9/joda-time-2.9.9.iml" filepath="$PROJECT_DIR$/joda-time-2.9.9/joda-time-2.9.9.iml" />
+    </modules>
+  </component>
+</project>

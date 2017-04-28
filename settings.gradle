@@ -1,0 +1,1 @@
+include ':app', ':android-iconify-meteocons', ':android-iconify-material', ':android-iconify-fontawesome', ':android-iconify-ionicons', ':android-iconify-entypo', ':android-iconify-typicons', ':android-iconify', ':android-iconify-material-community', ':android-iconify-weathericons', ':android-iconify-simplelineicons', ':android-iconify-sample', ':joda-time-2.9.9'
