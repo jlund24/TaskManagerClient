@@ -201,6 +201,11 @@ public class Main2Activity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position != 0)
                 {
+                    //if it's the last option, it's the custom date one
+                    if (position == getResources().getStringArray(R.array.dueDateOptions).length - 1)
+                    {
+
+                    }
                     durationClearButton.setVisibility(View.VISIBLE);
                 }
             }

@@ -1,6 +1,8 @@
 package com.student.john.taskmanagerclient;
 
 
+import android.content.Context;
+
 import com.student.john.taskmanagerclient.models.Task;
 
 import java.util.ArrayList;
@@ -22,6 +24,7 @@ public class Model {
     public static final String DD_BY_FRIDAY = "By Friday";
     public static final String DD_TOMORROW = "Tomorrow";
     public static final String DD_TODAY = "Today";
+    public static final String DD_NEXT_2_DAYS = "Next 2 days";
     public static final String DD_NEXT_3_DAYS = "Next 3 days";
     public static final String DD_WITHIN_WEEK = "Within the week";
     public static final String DD_NEXT_7_DAYS = "Next 7 days";
@@ -88,14 +91,12 @@ public class Model {
 
         //initialize buttonMapping
         buttonMapping = new HashMap<>();
-        buttonMapping.put(R.id.addEditTask_dueDate_toggleButton1, DD_TOMORROW);
-        buttonMapping.put(R.id.addEditTask_dueDate_toggleButton2, DD_BY_FRIDAY);
+
         buttonMapping.put(R.id.addEditTask1_dueTime_radioButton1, TIME_MORNING);
         buttonMapping.put(R.id.addEditTask1_dueTime_radioButton2, TIME_AFTERNOON);
         buttonMapping.put(R.id.addEditTask1_dueTime_radioButton3, TIME_EVENING);
         buttonMapping.put(R.id.addEditTask1_dueTime_radioButton4, TIME_NIGHT);
-        buttonMapping.put(R.id.addEditTask_duration_toggleButton1, DUR_30_MIN_KEY);
-        buttonMapping.put(R.id.addEditTask_duration_toggleButton2, DUR_1_HR_KEY);
+
         buttonMapping.put(R.id.addEditTask1_priority_radioButton1, PRIORITY_LOW);
         buttonMapping.put(R.id.addEditTask1_priority_radioButton2, PRIORITY_MED);
         buttonMapping.put(R.id.addEditTask1_priority_radioButton3, PRIORITY_HIGH);
@@ -119,6 +120,7 @@ public class Model {
         dueDateOptions.add(SELECT_OPTION);
         dueDateOptions.add(DD_TODAY);
         dueDateOptions.add(DD_TOMORROW);
+        dueDateOptions.add(DD_NEXT_2_DAYS);
         dueDateOptions.add(DD_NEXT_3_DAYS);
         dueDateOptions.add(DD_BY_FRIDAY);
         dueDateOptions.add(DD_WITHIN_WEEK);
