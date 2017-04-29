@@ -61,8 +61,12 @@ public class Model {
     private Map<String, Integer> priorityColors;
     private Map<String, Double> durationValues;
     private ArrayList<String> dueDateOptions;
-    private Map<Integer, String> buttonMapping;
-    private Map<String, Integer> reverseButtonMapping;
+    private Map<Integer, String> dueTimeButtonMapping;
+    private Map<String, Integer> reverseDueTimeButtonMapping;
+    private Map<Integer, String> priorityButtonMapping;
+    private Map<String, Integer> reversePriorityButtonMapping;
+    private Map<Integer, String> timePreferenceButtonMapping;
+    private Map<String, Integer> reverseTimePreferenceButtonMapping;
     private ArrayList<String> durationOptions;
     private ArrayList<String> timeOptions;
     private ArrayList<String> priorityOptions;
@@ -86,29 +90,45 @@ public class Model {
         durationValues.put(DUR_2_HR_KEY, DUR_2_HR_VALUE);
         durationValues.put(DUR_5_HR_KEY, DUR_5_HR_VALUE);
 
-        //initialize buttonMapping
-        buttonMapping = new HashMap<>();
-        buttonMapping.put(R.id.addEditTask_dueDate_toggleButton1, DD_TOMORROW);
-        buttonMapping.put(R.id.addEditTask_dueDate_toggleButton2, DD_BY_FRIDAY);
-        buttonMapping.put(R.id.addEditTask1_dueTime_radioButton1, TIME_MORNING);
-        buttonMapping.put(R.id.addEditTask1_dueTime_radioButton2, TIME_AFTERNOON);
-        buttonMapping.put(R.id.addEditTask1_dueTime_radioButton3, TIME_EVENING);
-        buttonMapping.put(R.id.addEditTask1_dueTime_radioButton4, TIME_NIGHT);
-        buttonMapping.put(R.id.addEditTask_duration_toggleButton1, DUR_30_MIN_KEY);
-        buttonMapping.put(R.id.addEditTask_duration_toggleButton2, DUR_1_HR_KEY);
-        buttonMapping.put(R.id.addEditTask1_priority_radioButton1, PRIORITY_LOW);
-        buttonMapping.put(R.id.addEditTask1_priority_radioButton2, PRIORITY_MED);
-        buttonMapping.put(R.id.addEditTask1_priority_radioButton3, PRIORITY_HIGH);
-        buttonMapping.put(R.id.addEditTask1_timePreference_radioButton1, TIME_MORNING);
-        buttonMapping.put(R.id.addEditTask1_timePreference_radioButton2, TIME_AFTERNOON);
-        buttonMapping.put(R.id.addEditTask1_timePreference_radioButton3, TIME_EVENING);
-        buttonMapping.put(R.id.addEditTask1_timePreference_radioButton4, TIME_NIGHT);
+        //initialize dueTimeButtonMapping
+        dueTimeButtonMapping = new HashMap<>();
+        dueTimeButtonMapping.put(R.id.addEditTask1_dueTime_radioButton1, TIME_MORNING);
+        dueTimeButtonMapping.put(R.id.addEditTask1_dueTime_radioButton2, TIME_AFTERNOON);
+        dueTimeButtonMapping.put(R.id.addEditTask1_dueTime_radioButton3, TIME_EVENING);
+        dueTimeButtonMapping.put(R.id.addEditTask1_dueTime_radioButton4, TIME_NIGHT);
+
+        //initialize reverseDueTimeButtonMapping
+        reverseDueTimeButtonMapping = new HashMap<>();
+        for (int key : dueTimeButtonMapping.keySet())
+        {
+            reverseDueTimeButtonMapping.put(dueTimeButtonMapping.get(key), key);
+        }
+
+        //initialize priorityButtonMapping
+        priorityButtonMapping = new HashMap<>();
+        priorityButtonMapping.put(R.id.addEditTask1_priority_radioButton1, PRIORITY_LOW);
+        priorityButtonMapping.put(R.id.addEditTask1_priority_radioButton2, PRIORITY_MED);
+        priorityButtonMapping.put(R.id.addEditTask1_priority_radioButton3, PRIORITY_HIGH);
+
+        //initialize reversePriorityButtonMapping
+        reversePriorityButtonMapping = new HashMap<>();
+        for(int key : priorityButtonMapping.keySet())
+        {
+            reversePriorityButtonMapping.put(priorityButtonMapping.get(key), key);
+        }
+
+        //initialize timePreferenceButtonMapping
+        timePreferenceButtonMapping = new HashMap<>();
+        timePreferenceButtonMapping.put(R.id.addEditTask1_timePreference_radioButton1, TIME_MORNING);
+        timePreferenceButtonMapping.put(R.id.addEditTask1_timePreference_radioButton2, TIME_AFTERNOON);
+        timePreferenceButtonMapping.put(R.id.addEditTask1_timePreference_radioButton3, TIME_EVENING);
+        timePreferenceButtonMapping.put(R.id.addEditTask1_timePreference_radioButton4, TIME_NIGHT);
 
         //initialize reverseButtonMapping
-        reverseButtonMapping = new HashMap<>();
-        for (int key : buttonMapping.keySet())
+        reverseTimePreferenceButtonMapping = new HashMap<>();
+        for(int key : timePreferenceButtonMapping.keySet())
         {
-            reverseButtonMapping.put(buttonMapping.get(key), key);
+            reverseTimePreferenceButtonMapping.put(timePreferenceButtonMapping.get(key), key);
         }
 
 
@@ -199,12 +219,28 @@ public class Model {
         return durationValues;
     }
 
-    public Map<Integer, String> getButtonMapping() {
-        return buttonMapping;
+    public Map<Integer, String> getDueTimeButtonMapping() {
+        return dueTimeButtonMapping;
     }
 
-    public Map<String, Integer> getReverseButtonMapping() {
-        return reverseButtonMapping;
+    public Map<Integer, String> getPriorityButtonMapping() {
+        return priorityButtonMapping;
+    }
+
+    public Map<String, Integer> getReversePriorityButtonMapping() {
+        return reversePriorityButtonMapping;
+    }
+
+    public Map<Integer, String> getTimePreferenceButtonMapping() {
+        return timePreferenceButtonMapping;
+    }
+
+    public Map<String, Integer> getReverseTimePreferenceButtonMapping() {
+        return reverseTimePreferenceButtonMapping;
+    }
+
+    public Map<String, Integer> getReverseDueTimeButtonMapping() {
+        return reverseDueTimeButtonMapping;
     }
 
     public int getDueDateSpinnerPosition(String description)
