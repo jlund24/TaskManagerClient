@@ -1,6 +1,14 @@
 package com.student.john.taskmanagerclient;
 
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.student.john.taskmanagerclient.database.TaskBaseHelper;
+import com.student.john.taskmanagerclient.database.TaskCursorWrapper;
+import com.student.john.taskmanagerclient.database.TaskDBSchema.TaskTable;
 import com.student.john.taskmanagerclient.models.Task;
 
 import java.util.ArrayList;
@@ -16,6 +24,7 @@ public class Model {
     public static final String PRIORITY_KEY = "Priority";
     public static final String TIME_PREFERENCE_KEY = "TimePreference";
     public static final String TASK_ID_KEY = "TaskID";
+    public static final String COMPLETED_KEY = "Completed";
 
     public static final String SELECT_OPTION = "Select option";
 
@@ -60,6 +69,7 @@ public class Model {
     private Map<String, Task> taskMap = new HashMap<>();
     private Map<String, Integer> priorityColors;
     private Map<String, Double> durationValues;
+    private Map<Double, String> reverseDurationValues;
     private ArrayList<String> dueDateOptions;
     private Map<Integer, String> dueTimeButtonMapping;
     private Map<String, Integer> reverseDueTimeButtonMapping;
@@ -70,6 +80,11 @@ public class Model {
     private ArrayList<String> durationOptions;
     private ArrayList<String> timeOptions;
     private ArrayList<String> priorityOptions;
+
+    //database stuff
+    private Context context;
+    private SQLiteDatabase database;
+
     private String user;
 
     public static Model instance = null;
@@ -78,7 +93,7 @@ public class Model {
         //initialize priorityColors
         priorityColors = new HashMap<>();
         priorityColors.put(PRIORITY_HIGH, R.color.red);
-        priorityColors.put(PRIORITY_MED, R.color.yellow);
+        priorityColors.put(PRIORITY_MED, R.color.orange);
         priorityColors.put(PRIORITY_LOW, R.color.green);
 
         //initialize durationValue map
@@ -89,6 +104,13 @@ public class Model {
         durationValues.put(DUR_1_5_HR_KEY, DUR_1_5_HR_VALUE);
         durationValues.put(DUR_2_HR_KEY, DUR_2_HR_VALUE);
         durationValues.put(DUR_5_HR_KEY, DUR_5_HR_VALUE);
+
+        //initialize reverseDurationValues map
+        reverseDurationValues = new HashMap<>();
+        for (String key : durationValues.keySet())
+        {
+            reverseDurationValues.put(durationValues.get(key), key);
+        }
 
         //initialize dueTimeButtonMapping
         dueTimeButtonMapping = new HashMap<>();
@@ -171,6 +193,9 @@ public class Model {
         priorityOptions.add(PRIORITY_LOW);
         priorityOptions.add(PRIORITY_MED);
         priorityOptions.add(PRIORITY_HIGH);
+
+
+
     }
 
     public static Model getInstance()
@@ -188,23 +213,75 @@ public class Model {
     }
 
     public List<Task> getTasks() {
+
+        List<Task> tasks = new ArrayList<>();
+
+        TaskCursorWrapper cursor = queryTasks(null, null);
+
+        try
+        {
+            cursor.moveToFirst();
+            while(!cursor.isAfterLast())
+            {
+                tasks.add(cursor.getTask());
+                cursor.moveToNext();
+            }
+        } finally {
+            cursor.close();
+        }
+
         return tasks;
+    }
+
+
+//    public void updateTask(Task task)
+//    {
+//        taskMap.put(task.getTaskID(), task);
+//        //remove previous version (same id)
+//        tasks.remove(task);
+//        //add new version
+//        tasks.add(task);
+//
+//    }
+
+    public void updateTask(Task task)
+    {
+        ContentValues values = getContentValues(task);
+
+        database.update( TaskTable.NAME, values, TaskTable.Cols.TASKID + " = ?",
+                new String[]{ task.getTaskID() } );
     }
 
     public void addTask(Task task)
     {
-        tasks.add(task);
-        taskMap.put(task.getTaskID(), task);
+        ContentValues values = getContentValues(task);
+
+        database.insert(TaskTable.NAME, null, values);
     }
 
-    public void updateTask(Task task)
+    public Task getTask (String taskID)
     {
-        taskMap.put(task.getTaskID(), task);
-        //remove previous version (same id)
-        tasks.remove(task);
-        //add new version
-        tasks.add(task);
+        TaskCursorWrapper cursor = queryTasks(TaskTable.Cols.TASKID + " = ?",
+                new String[] {taskID});
 
+        try
+        {
+            if (cursor.getCount() == 0)
+            {
+                return null;
+            }
+
+            cursor.moveToFirst();
+            return cursor.getTask();
+        } finally {
+            cursor.close();
+        }
+    }
+
+    public void deleteTask (String taskID)
+    {
+        database.delete(TaskTable.NAME, TaskTable.Cols.TASKID + " = ?",
+                new String[]{taskID});
     }
 
     public Map<String, Integer> getPriorityColors() {
@@ -253,6 +330,14 @@ public class Model {
         return durationOptions.indexOf(description);
     }
 
+    public Map<Double, String> getReverseDurationValues() {
+        return reverseDurationValues;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
     public int getTimePosition(String description)
     {
         return timeOptions.indexOf(description);
@@ -261,6 +346,44 @@ public class Model {
     public int getPriorityPosition(String description)
     {
         return priorityOptions.indexOf(description);
+    }
+
+    private static ContentValues getContentValues(Task task)
+    {
+        ContentValues values = new ContentValues();
+        values.put(TaskTable.Cols.TASKID, task.getTaskID());
+        values.put(TaskTable.Cols.TITLE, task.getTitle());
+        if (task.getDueDate() != null) values.put(TaskTable.Cols.DUEDATE, task.getDueDate().getDateAsString());
+        else values.put(TaskTable.Cols.DUEDATE, "");
+        values.put(TaskTable.Cols.DUETIME, task.getDueTime());
+        values.put(TaskTable.Cols.PRIORITY, task.getPriority());
+        values.put(TaskTable.Cols.DURATION, task.getDuration());
+        values.put(TaskTable.Cols.TIMEPREFERENCE, task.getTimePreference());
+        values.put(TaskTable.Cols.COMPLETED, task.isCompleted() ? 1 : 0);
+
+        return values;
+    }
+
+    private TaskCursorWrapper queryTasks (String whereClause, String[] whereArgs)
+    {
+        Cursor cursor = database.query(
+                TaskTable.NAME,
+                null,
+                whereClause,
+                whereArgs,
+                null,
+                null,
+                null
+        );
+
+        return new TaskCursorWrapper(cursor);
+    }
+
+    public void initializeDB(Context context)
+    {
+        //initialize database
+        this.context = context.getApplicationContext();
+        database = new TaskBaseHelper(this.context).getWritableDatabase();
     }
 
 

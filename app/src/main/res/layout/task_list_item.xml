@@ -2,34 +2,82 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp">
+                android:layout_height="30dp"
+              android:orientation="horizontal"
+                android:layout_margin="7dp">
 
-    <TextView
-        android:id="@+id/taskListItem_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|left"
 
-        android:textColor="@color/Black"
-        android:textSize="15sp"
-        android:layout_margin="10dp"/>
+        <CheckBox
+            android:id="@+id/taskListItem_completedCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
 
-    <TextView
-        android:id="@+id/taskListItem_dueDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="12sp"
-        android:layout_margin="10dp"/>
+            />
 
-    <ImageView
-        android:id="@+id/taskListItem_priority"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="10dp"
-        android:visibility="invisible"
-        />
+        <TextView
+            android:id="@+id/taskListItem_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|left"
+
+            android:textColor="@color/Black"
+            android:textSize="15sp"
+            android:layout_margin="5dp"/>
+
+        <TextView
+            android:id="@+id/taskListItem_dueDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="12sp"
+            android:layout_margin="5dp"/>
+
+        <ImageView
+            android:id="@+id/taskListItem_priority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:visibility="invisible"
+            android:layout_marginRight="10dp"
+            />
+
+
+        <ImageButton
+            android:id="@+id/taskListItem_scheduleIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center|right"
+            android:visibility="gone"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_margin="3dp"/>
+
+        <ImageButton
+            android:id="@+id/taskListItem_editIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:visibility="gone"
+            android:layout_margin="3dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:layout_gravity="center"
+            />
+
+        <ImageButton
+            android:id="@+id/taskListItem_deleteIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:visibility="gone"
+            android:layout_margin="3dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:layout_gravity="center"
+            />
+
+
+
+
+
 
 </LinearLayout>

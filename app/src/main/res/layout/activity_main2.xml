@@ -80,7 +80,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
                 android:visibility="gone"
-                android:background="@null"
+                android:background="?android:attr/selectableItemBackground"
                 />
 
 
@@ -154,7 +154,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
                 android:visibility="gone"
-                android:background="@null"
+                android:background="?android:attr/selectableItemBackground"
                 />
 
         </RelativeLayout>
@@ -182,6 +182,7 @@
                 android:layout_height="wrap_content"
                 android:entries="@array/durationOptions"
                 android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
                 android:id="@+id/addEditTask1_duration_spinner">
 
             </Spinner>
@@ -194,7 +195,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
                 android:visibility="gone"
-                android:background="@null"
+                android:background="?android:attr/selectableItemBackground"
                 />
 
         </RelativeLayout>
@@ -259,7 +260,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
                 android:visibility="gone"
-                android:background="@null"
+                android:background="?android:attr/selectableItemBackground"
                 />
 
         </RelativeLayout>
@@ -334,7 +335,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
                 android:visibility="gone"
-                android:background="@null"
+                android:background="?android:attr/selectableItemBackground"
                 />
 
         </RelativeLayout>

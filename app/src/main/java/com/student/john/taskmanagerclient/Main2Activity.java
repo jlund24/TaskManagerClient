@@ -56,10 +56,12 @@ public class Main2Activity extends AppCompatActivity {
         String editingTaskID = getIntent().getStringExtra(EXTRA_TASK_ID_TO_EDIT);
         if (editingTaskID != null)
         {
-            editingTask = model.getTaskMap().get(editingTaskID);
+            editingTask = model.getTask(editingTaskID);
             setFieldsForEditing();
         }
     }
+
+
 
     private void setUpFields()
     {
@@ -293,8 +295,14 @@ public class Main2Activity extends AppCompatActivity {
         if (editingTask != null)
         {
             params.put(Model.TASK_ID_KEY, editingTask.getTaskID());
+            model.updateTask(new Task(title, params));
         }
-        model.updateTask(new Task(title, params));
+        else
+        {
+            //model.updateTask(new Task(title, params));
+            model.addTask(new Task(title, params));
+        }
+
 
     }
 

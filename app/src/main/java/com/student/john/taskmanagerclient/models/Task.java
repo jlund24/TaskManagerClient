@@ -11,20 +11,50 @@ public class Task {
     private String title;
     private String user;
     private String priority;
-    //TODO make custom dateTime class or use java's latest
     private String dueDateString;
     private CustomDate dueDate;
     private String dueTime;
     private String durationString;
     private double duration;
-    //TODO make enums for below
-    private int intensity;
+    private int intensity; //not supported yet
     private String timePreference;
-    private int progress;
-    private int type;
+    private int progress; //not supported yet
+    private int type; //not supported yet
+    private boolean completed = false;
     private String taskID;
 
+    public Task (String taskID, String title, Map<String, Object> params)
+    {
+        this.taskID = taskID;
+        this.title = title;
+        if (params.containsKey(Model.DUE_DATE_KEY))
+        {
+            this.dueDate = new CustomDate((String) params.get(Model.DUE_DATE_KEY));
+            this.dueDateString = getDueDateString();
+        }
+        if (params.containsKey(Model.DUE_TIME_KEY))
+        {
+            this.dueTime = (String)params.get(Model.DUE_TIME_KEY);
+        }
+        if (params.containsKey(Model.DURATION_KEY))
+        {
+            this.duration = (Double) params.get(Model.DURATION_KEY);
+            this.durationString = getDurationStringFromDouble(this.duration);
+        }
+        if (params.containsKey(Model.PRIORITY_KEY))
+        {
+            this.priority = (String) params.get(Model.PRIORITY_KEY);
+        }
+        if(params.containsKey(Model.TIME_PREFERENCE_KEY))
+        {
+            this.timePreference = (String) params.get(Model.TIME_PREFERENCE_KEY);
+        }
+        if (params.containsKey(Model.COMPLETED_KEY))
+        {
+            this.completed = (Boolean) params.get(Model.COMPLETED_KEY);
+        }
 
+    }
 
     public Task(String title, Map<String, String> params)
     {
@@ -80,13 +110,9 @@ public class Task {
         this.taskID = UUID.randomUUID().toString();
     }
 
-    private void setDurationFromString(String key)
+    private String getDurationStringFromDouble(Double duration)
     {
-        switch(key)
-        {
-            case Model.DUR_30_MIN_KEY:
-                duration = Model.DUR_30_MIN_VALUE;
-        }
+        return Model.getInstance().getReverseDurationValues().get(duration);
     }
 
     public String getTitle() {
@@ -186,6 +212,14 @@ public class Task {
         return dueDate;
     }
 
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
+
     @Override
     public boolean equals(Object obj) {
 
@@ -204,7 +238,7 @@ public class Task {
 
     private void updateDueDateString()
     {
-        if (dueDateString != null)
+        if (dueDate != null)
         {
             dueDateString = dueDate.getCurrentDescription();
         }

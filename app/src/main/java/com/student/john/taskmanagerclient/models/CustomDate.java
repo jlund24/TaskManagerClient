@@ -8,6 +8,8 @@ import com.student.john.taskmanagerclient.Model;
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
 import org.joda.time.Period;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import java.util.Calendar;
 import java.util.Locale;
@@ -36,16 +38,18 @@ public class CustomDate {
 
     }
 
+
+
     //this constructor is meant to be used for calculating due dates. The key containing when the due
     //date should be relative to the current date is passed in and then calculations are made to
     //generate the correct due date. Time is not included because that is saved in an abstracted way
     //in dueTime
-    public CustomDate(String relativeKey)
+    public CustomDate(String input)
     {
         LocalDate currentDate = new LocalDate();
 
 
-        switch(relativeKey) {
+        switch(input) {
             case Model.DD_TOMORROW:
                 jodaDate = currentDate.plus(Period.days(1));
                 break;
@@ -74,8 +78,20 @@ public class CustomDate {
                 jodaDate = currentDate.plus ( Period.days(30));
                 break;
             default:
-                jodaDate = null;
-                break;
+                if (isValidDateString(input))
+                {
+                    int year = Integer.parseInt(input.substring(0,4));
+                    int month = Integer.parseInt(input.substring(5,7));
+                    int day = Integer.parseInt(input.substring(8,10));
+                    jodaDate = new LocalDate(year, month, day);
+                }
+                else
+                {
+                    jodaDate = null;
+                }
+
+                return;
+
 
         }
 
@@ -113,7 +129,7 @@ public class CustomDate {
 
     private int getDaysUntilEndOfMonth(LocalDate currentDay)
     {
-        return Days.daysBetween(currentDay.dayOfMonth().withMaximumValue(), currentDay).getDays();
+        return Days.daysBetween(currentDay, currentDay.dayOfMonth().withMaximumValue()).getDays();
     }
 
     public String getCurrentDescription()
@@ -188,6 +204,25 @@ public class CustomDate {
 
     public String getDayOfWeekName() {
         return dayOfWeekName;
+    }
+
+    private boolean isValidDateString(String input)
+    {
+
+        try {
+            DateTimeFormatter dtf = DateTimeFormat.forPattern("YYYY-MM-dd");
+            dtf.parseDateTime(input);
+            return true;
+        } catch (IllegalArgumentException iae) {
+            return false;
+        }
+    }
+
+    public String getDateAsString()
+    {
+        if (jodaDate == null) return null;
+        DateTimeFormatter dtf = DateTimeFormat.forPattern("YYYY-MM-dd");
+        return jodaDate.toString(dtf);
     }
 
 
