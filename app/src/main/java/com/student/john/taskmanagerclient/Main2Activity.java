@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.joanzapata.android.iconify.IconDrawable;
@@ -57,17 +56,19 @@ public class Main2Activity extends AppCompatActivity {
         String editingTaskID = getIntent().getStringExtra(EXTRA_TASK_ID_TO_EDIT);
         if (editingTaskID != null)
         {
-            editingTask = model.getTaskMap().get(editingTaskID);
+            editingTask = model.getTask(editingTaskID);
             setFieldsForEditing();
         }
     }
+
+
 
     private void setUpFields()
     {
         titleEditText = (EditText)findViewById(R.id.addEditTask1_title_editTextView);
 
         clear_icon = new IconDrawable(this, Iconify.IconValue.fa_trash_o).
-                colorRes(R.color.red).sizeDp(25);
+                colorRes(R.color.red).sizeDp(22);
 
         cancelButton = (Button) findViewById(R.id.addEditTask1_cancelButton);
         cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -123,7 +124,7 @@ public class Main2Activity extends AppCompatActivity {
 
         if (editingTask.getDueTime() != null)
         {
-            int buttonID = model.getReverseButtonMapping().get(editingTask.getDueTime());
+            int buttonID = model.getReverseDueTimeButtonMapping().get(editingTask.getDueTime());
             dueTimeRadioGroup.check( buttonID );
         }
 
@@ -134,13 +135,13 @@ public class Main2Activity extends AppCompatActivity {
         //TODO fix bug where priority is not checked when you go to edit a task
         if (editingTask.getPriority() != null)
         {
-            int buttonID = model.getReverseButtonMapping().get(editingTask.getPriority());
+            int buttonID = model.getReversePriorityButtonMapping().get(editingTask.getPriority());
             priorityRadioGroup.check( buttonID );
         }
 
         if (editingTask.getTimePreference() != null)
         {
-            int buttonID = model.getReverseButtonMapping().get(editingTask.getTimePreference());
+            int buttonID = model.getReverseTimePreferenceButtonMapping().get(editingTask.getTimePreference());
             timePreferenceRadioGroup.check( buttonID );
         }
     }
@@ -299,8 +300,14 @@ public class Main2Activity extends AppCompatActivity {
         if (editingTask != null)
         {
             params.put(Model.TASK_ID_KEY, editingTask.getTaskID());
+            model.updateTask(new Task(title, params));
         }
-        model.updateTask(new Task(title, params));
+        else
+        {
+            //model.updateTask(new Task(title, params));
+            model.addTask(new Task(title, params));
+        }
+
 
     }
 
@@ -318,7 +325,7 @@ public class Main2Activity extends AppCompatActivity {
 
     private String getDueTimeSelection()
     {
-        return model.getButtonMapping().get( dueTimeRadioGroup.getCheckedRadioButtonId() );
+        return model.getDueTimeButtonMapping().get( dueTimeRadioGroup.getCheckedRadioButtonId() );
     }
 
     private String getDurationSelection()
@@ -328,12 +335,12 @@ public class Main2Activity extends AppCompatActivity {
 
     private String getPrioritySelection()
     {
-        return model.getButtonMapping().get( priorityRadioGroup.getCheckedRadioButtonId() );
+        return model.getPriorityButtonMapping().get( priorityRadioGroup.getCheckedRadioButtonId() );
     }
 
     private String getTimePreferenceSelection()
     {
-        return model.getButtonMapping().get( timePreferenceRadioGroup.getCheckedRadioButtonId());
+        return model.getTimePreferenceButtonMapping().get( timePreferenceRadioGroup.getCheckedRadioButtonId());
     }
 
 

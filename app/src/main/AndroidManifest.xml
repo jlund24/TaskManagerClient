@@ -16,14 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".AddEditTaskActivity">
-        </activity>
-        <activity
-            android:name=".OtherAddEditTask"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_other_add_edit_task"
-            android:theme="@style/FullscreenTheme">
-        </activity>
+
         <activity android:name=".Main2Activity">
         </activity>
     </application>

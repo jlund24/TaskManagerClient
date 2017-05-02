@@ -11,6 +11,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
+        Model.getInstance().initializeDB(this);
         updateUI();
 
 
@@ -75,26 +77,64 @@ public class MainActivity extends AppCompatActivity {
         //get tasks
         List<Task> tasks = Model.getInstance().getTasks();
 
-        adapter = new TaskAdapter(tasks);
-        taskRecyclerView.setAdapter(adapter);
+        if (adapter == null)
+        {
+            adapter = new TaskAdapter(tasks);
+            taskRecyclerView.setAdapter(adapter);
+        }
+        else
+        {
+            adapter.setTasks(tasks);
+            adapter.notifyDataSetChanged();
+        }
+
+
 
 
     }
 
-    private class TaskHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    private class TaskHolder extends RecyclerView.ViewHolder implements  View.OnClickListener{
+        public CheckBox isCompleted;
         public TextView title;
         public TextView dueDate;
         public ImageView priority;
+        public ImageButton schedule;
+        public ImageButton edit;
+        public ImageButton delete;
 
         private Task task;
 
         public TaskHolder(View itemView)
         {
             super(itemView);
+
             itemView.setOnClickListener(this);
+            isCompleted = (CheckBox) itemView.findViewById(R.id.taskListItem_completedCheckBox);
             title = (TextView) itemView.findViewById(R.id.taskListItem_title);
             dueDate = (TextView) itemView.findViewById(R.id.taskListItem_dueDate);
             priority = (ImageView) itemView.findViewById(R.id.taskListItem_priority);
+            schedule = (ImageButton) itemView.findViewById(R.id.taskListItem_scheduleIcon);
+            edit = (ImageButton) itemView.findViewById(R.id.taskListItem_editIcon);
+            edit.setImageDrawable(new IconDrawable(MainActivity.this, Iconify.IconValue.fa_edit).sizeDp(22));
+            edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //send taskID to addEditActivity
+                    Intent i = Main2Activity.newIntent(MainActivity.this, task.getTaskID());
+                    startActivityForResult(i, REQUEST_CODE_SAVE);
+                }
+            });
+            delete = (ImageButton) itemView.findViewById(R.id.taskListItem_deleteIcon);
+            delete.setImageDrawable(new IconDrawable(MainActivity.this, Iconify.IconValue.fa_trash_o)
+                    .colorRes(R.color.red).sizeDp(22));
+            delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //delete task
+                    Model.getInstance().deleteTask(task.getTaskID());
+                    updateUI();
+                }
+            });
         }
 
         public void bindTask(Task task)
@@ -113,12 +153,24 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        public void onClick(View v)
-        {
-            //send taskID to fragment
-            Intent i = Main2Activity.newIntent(MainActivity.this, task.getTaskID());
-            startActivityForResult(i, REQUEST_CODE_SAVE);
+        @Override
+        public void onClick(View v) {
+            if (edit.getVisibility() == View.VISIBLE)
+            {
+                edit.setVisibility(View.GONE);
+                delete.setVisibility(View.GONE);
+            }
+            else
+            {
+                edit.setVisibility(View.VISIBLE);
+                delete.setVisibility(View.VISIBLE);
+            }
+
+
         }
+
+
+
     }
 
     private class TaskAdapter extends RecyclerView.Adapter<TaskHolder> {
@@ -147,6 +199,11 @@ public class MainActivity extends AppCompatActivity {
         public int getItemCount()
         {
             return tasks.size();
+        }
+
+        public void setTasks(List<Task> tasks)
+        {
+            this.tasks = tasks;
         }
 
     }
