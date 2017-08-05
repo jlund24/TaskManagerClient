@@ -19,6 +19,7 @@
         <item name="select">Select option</item>
         <item name="today">Today</item>
         <item name="tomorrow">Tomorrow</item>
+        <item name="next_2_days">Next 2 days</item>
         <item name="next_3_days">Next 3 days</item>
         <item name="by_friday">By Friday</item>
         <item name="within_week">Within the week</item>

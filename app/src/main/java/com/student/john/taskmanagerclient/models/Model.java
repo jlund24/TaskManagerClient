@@ -34,6 +34,7 @@ public class Model {
     public static final String DD_BY_FRIDAY = "By Friday";
     public static final String DD_TOMORROW = "Tomorrow";
     public static final String DD_TODAY = "Today";
+    public static final String DD_NEXT_2_DAYS = "Next 2 days";
     public static final String DD_NEXT_3_DAYS = "Next 3 days";
     public static final String DD_WITHIN_WEEK = "Within the week";
     public static final String DD_NEXT_7_DAYS = "Next 7 days";
@@ -164,6 +165,7 @@ public class Model {
         dueDateOptions.add(SELECT_OPTION);
         dueDateOptions.add(DD_TODAY);
         dueDateOptions.add(DD_TOMORROW);
+        dueDateOptions.add(DD_NEXT_2_DAYS);
         dueDateOptions.add(DD_NEXT_3_DAYS);
         dueDateOptions.add(DD_BY_FRIDAY);
         dueDateOptions.add(DD_WITHIN_WEEK);

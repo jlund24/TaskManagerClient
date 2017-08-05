@@ -59,6 +59,8 @@ public class CustomDate implements Comparable<CustomDate> {
             case Model.DD_TODAY:
                 jodaDate = currentDate;
                 break;
+            case Model.DD_NEXT_2_DAYS:
+                jodaDate = currentDate.plus(Period.days(2));
             case Model.DD_NEXT_3_DAYS:
                 jodaDate = currentDate.plus( Period.days(3) );
                 break;
@@ -149,6 +151,10 @@ public class CustomDate implements Comparable<CustomDate> {
         else if (dayOfWeekNum == FRIDAY)
         {
             description = Model.DD_BY_FRIDAY;
+        }
+        else if (difference <= 2)
+        {
+            description = Model.DD_NEXT_2_DAYS;
         }
         else if (difference <= 3)
         {
