@@ -1,17 +1,20 @@
-package com.student.john.taskmanagerclient;
+package com.student.john.taskmanagerclient.models;
 
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.v7.util.SortedList;
 
+import com.student.john.taskmanagerclient.R;
 import com.student.john.taskmanagerclient.database.TaskBaseHelper;
 import com.student.john.taskmanagerclient.database.TaskCursorWrapper;
 import com.student.john.taskmanagerclient.database.TaskDBSchema.TaskTable;
-import com.student.john.taskmanagerclient.models.Task;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -229,7 +232,7 @@ public class Model {
         } finally {
             cursor.close();
         }
-
+        Collections.sort(tasks, new Task());
         return tasks;
     }
 

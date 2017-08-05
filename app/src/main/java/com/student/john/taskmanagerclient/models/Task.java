@@ -1,12 +1,13 @@
 package com.student.john.taskmanagerclient.models;
 
 
-import com.student.john.taskmanagerclient.Model;
+import android.support.annotation.NonNull;
 
+import java.util.Comparator;
 import java.util.Map;
 import java.util.UUID;
 
-public class Task {
+public class Task implements Comparable<Task>, Comparator<Task> {
 
     private String title;
     private String user;
@@ -22,6 +23,8 @@ public class Task {
     private int type; //not supported yet
     private boolean completed = false;
     private String taskID;
+
+    public Task(){};
 
     public Task (String taskID, String title, Map<String, Object> params)
     {
@@ -236,11 +239,56 @@ public class Task {
 
     }
 
+    @Override
+    public int compareTo(@NonNull Task o) {
+
+        if (this.getDueDate() == o.getDueDate())
+        {
+            if (this.getPriority().equals(o.getPriority()))
+            {
+                if (this.getDuration() == o.getDuration())
+                {
+                    if (this.getTimePreference().equals(o.getTimePreference()))
+                    {
+                        return -1;
+                    }
+                    return this.getTimePreference().compareTo(o.getTimePreference());
+                }
+                return (this.getDuration() > o.getDuration()) ? -1:1;
+            }
+            return (this.getPriority().compareTo(o.getPriority()));
+        }
+        return (this.getDueDate().compareTo(o.getDueDate()));
+
+
+    }
+
     private void updateDueDateString()
     {
         if (dueDate != null)
         {
             dueDateString = dueDate.getCurrentDescription();
         }
+    }
+
+    @Override
+    public int compare(Task o1, Task o2) {
+        if (o1.getDueDate() == o2.getDueDate())
+        {
+            if (o1.getPriority().equals(o2.getPriority()))
+            {
+                if (o1.getDuration() == o2.getDuration())
+                {
+                    if (o1.getTimePreference().equals(o2.getTimePreference()))
+                    {
+                        return -1;
+                    }
+                    return o1.getTimePreference().compareTo(o2.getTimePreference());
+                }
+                return (o1.getDuration() > o2.getDuration()) ? -1:1;
+            }
+            return (o1.getPriority().compareTo(o2.getPriority()));
+        }
+        return (o1.getDueDate().compareTo(o2.getDueDate()));
     }
 }

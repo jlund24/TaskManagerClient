@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.joanzapata.android.iconify.IconDrawable;
 import com.joanzapata.android.iconify.Iconify;
+import com.student.john.taskmanagerclient.models.Model;
 import com.student.john.taskmanagerclient.models.Task;
 
 import java.util.List;
@@ -87,9 +88,6 @@ public class MainActivity extends AppCompatActivity {
             adapter.setTasks(tasks);
             adapter.notifyDataSetChanged();
         }
-
-
-
 
     }
 

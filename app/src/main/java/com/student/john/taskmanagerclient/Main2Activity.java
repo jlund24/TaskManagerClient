@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.joanzapata.android.iconify.IconDrawable;
 import com.joanzapata.android.iconify.Iconify;
+import com.student.john.taskmanagerclient.models.Model;
 import com.student.john.taskmanagerclient.models.Task;
 
 import java.util.HashMap;

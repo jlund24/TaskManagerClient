@@ -3,7 +3,7 @@ package com.student.john.taskmanagerclient.models;
 
 
 
-import com.student.john.taskmanagerclient.Model;
+import android.support.annotation.NonNull;
 
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
@@ -15,7 +15,7 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.TimeZone;
 
-public class CustomDate {
+public class CustomDate implements Comparable<CustomDate> {
     private String monthName;
     private int monthNum;
     private int day;
@@ -206,6 +206,11 @@ public class CustomDate {
         return dayOfWeekName;
     }
 
+    public LocalDate getJodaDate()
+    {
+        return this.jodaDate;
+    }
+
     private boolean isValidDateString(String input)
     {
 
@@ -225,5 +230,22 @@ public class CustomDate {
         return jodaDate.toString(dtf);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) return false;
+        if (obj == this) return true;
 
+        if (obj.getClass() != this.getClass()) return false;
+
+        CustomDate date1 = (CustomDate) obj;
+
+        if (this.getDateAsString().equals(date1.getDateAsString())) return true;
+        else return false;
+    }
+
+    @Override
+    public int compareTo(@NonNull CustomDate o) {
+        return this.jodaDate.compareTo(o.getJodaDate());
+
+    }
 }

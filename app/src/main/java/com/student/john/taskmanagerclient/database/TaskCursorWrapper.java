@@ -4,9 +4,8 @@ package com.student.john.taskmanagerclient.database;
 import android.database.Cursor;
 import android.database.CursorWrapper;
 
-import com.student.john.taskmanagerclient.Model;
+import com.student.john.taskmanagerclient.models.Model;
 import com.student.john.taskmanagerclient.database.TaskDBSchema.TaskTable;
-import com.student.john.taskmanagerclient.models.CustomDate;
 import com.student.john.taskmanagerclient.models.Task;
 
 import java.util.HashMap;
