@@ -3,7 +3,7 @@ package com.student.john.taskmanagerclient.models;
 
 
 
-import android.support.annotation.NonNull;
+
 
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
@@ -47,7 +47,6 @@ public class CustomDate implements Comparable<CustomDate> {
     public CustomDate(String input)
     {
         LocalDate currentDate = new LocalDate();
-
 
         switch(input) {
             case Model.DD_TOMORROW:
@@ -250,7 +249,7 @@ public class CustomDate implements Comparable<CustomDate> {
     }
 
     @Override
-    public int compareTo(@NonNull CustomDate o) {
+    public int compareTo(CustomDate o) {
         return this.jodaDate.compareTo(o.getJodaDate());
 
     }

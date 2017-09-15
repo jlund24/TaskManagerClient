@@ -1,7 +1,7 @@
 package com.student.john.taskmanagerclient.models;
 
 
-import android.support.annotation.NonNull;
+
 
 import java.util.Comparator;
 import java.util.Map;
@@ -240,7 +240,7 @@ public class Task implements Comparable<Task>, Comparator<Task> {
     }
 
     @Override
-    public int compareTo(@NonNull Task o) {
+    public int compareTo(Task o) {
 
         if (this.getDueDate() == o.getDueDate())
         {

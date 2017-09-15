@@ -34,7 +34,7 @@ public class TaskCursorWrapper extends CursorWrapper {
         if (dueTime != null) params.put(Model.DUE_TIME_KEY, dueTime);
         if (priority != null) params.put(Model.PRIORITY_KEY, priority);
         if (duration > 0) params.put(Model.DURATION_KEY, duration);
-        if (timePreference != null) params.put(Model.TIME_PREFERENCE_KEY, duration);
+        if (timePreference != null) params.put(Model.TIME_PREFERENCE_KEY, timePreference);
         params.put(Model.COMPLETED_KEY, completed);
 
         return new Task (taskID, title, params);
