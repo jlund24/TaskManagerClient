@@ -144,18 +144,18 @@ public class Model {
         }
 
         //initialize timePreferenceButtonMapping
-        timePreferenceButtonMapping = new HashMap<>();
-        timePreferenceButtonMapping.put(R.id.addEditTask1_timePreference_radioButton1, TIME_MORNING);
-        timePreferenceButtonMapping.put(R.id.addEditTask1_timePreference_radioButton2, TIME_AFTERNOON);
-        timePreferenceButtonMapping.put(R.id.addEditTask1_timePreference_radioButton3, TIME_EVENING);
-        timePreferenceButtonMapping.put(R.id.addEditTask1_timePreference_radioButton4, TIME_NIGHT);
-
-        //initialize reverseButtonMapping
-        reverseTimePreferenceButtonMapping = new HashMap<>();
-        for(int key : timePreferenceButtonMapping.keySet())
-        {
-            reverseTimePreferenceButtonMapping.put(timePreferenceButtonMapping.get(key), key);
-        }
+//        timePreferenceButtonMapping = new HashMap<>();
+//        timePreferenceButtonMapping.put(R.id.addEditTask1_timePreference_radioButton1, TIME_MORNING);
+//        timePreferenceButtonMapping.put(R.id.addEditTask1_timePreference_radioButton2, TIME_AFTERNOON);
+//        timePreferenceButtonMapping.put(R.id.addEditTask1_timePreference_radioButton3, TIME_EVENING);
+//        timePreferenceButtonMapping.put(R.id.addEditTask1_timePreference_radioButton4, TIME_NIGHT);
+//
+//        //initialize reverseButtonMapping
+//        reverseTimePreferenceButtonMapping = new HashMap<>();
+//        for(int key : timePreferenceButtonMapping.keySet())
+//        {
+//            reverseTimePreferenceButtonMapping.put(timePreferenceButtonMapping.get(key), key);
+//        }
 
 
         //initialize dueDateOptions
@@ -313,13 +313,13 @@ public class Model {
         return reversePriorityButtonMapping;
     }
 
-    public Map<Integer, String> getTimePreferenceButtonMapping() {
-        return timePreferenceButtonMapping;
-    }
-
-    public Map<String, Integer> getReverseTimePreferenceButtonMapping() {
-        return reverseTimePreferenceButtonMapping;
-    }
+//    public Map<Integer, String> getTimePreferenceButtonMapping() {
+//        return timePreferenceButtonMapping;
+//    }
+//
+//    public Map<String, Integer> getReverseTimePreferenceButtonMapping() {
+//        return reverseTimePreferenceButtonMapping;
+//    }
 
     public Map<String, Integer> getReverseDueTimeButtonMapping() {
         return reverseDueTimeButtonMapping;
@@ -363,7 +363,7 @@ public class Model {
         values.put(TaskTable.Cols.DUETIME, task.getDueTime());
         values.put(TaskTable.Cols.PRIORITY, task.getPriority());
         values.put(TaskTable.Cols.DURATION, task.getDuration());
-        values.put(TaskTable.Cols.TIMEPREFERENCE, task.getTimePreference());
+        //values.put(TaskTable.Cols.TIMEPREFERENCE, task.getTimePreference());
         values.put(TaskTable.Cols.COMPLETED, task.isCompleted() ? 1 : 0);
 
         return values;

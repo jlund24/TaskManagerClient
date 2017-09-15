@@ -8,7 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -37,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         taskRecyclerView = (RecyclerView) findViewById(R.id.taskList_recyclerView);
         taskRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -47,8 +52,6 @@ public class MainActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent i = new Intent(MainActivity.this, AddEditTaskActivity.class);
-//                startActivityForResult(i, REQUEST_CODE_SAVE);
 
                 startActivity(new Intent(MainActivity.this, Main2Activity.class));
 
@@ -56,8 +59,6 @@ public class MainActivity extends AppCompatActivity {
         });
         Model.getInstance().initializeDB(this);
         updateUI();
-
-
     }
 
     @Override
@@ -78,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         //get tasks
         List<Task> tasks = Model.getInstance().getTasks();
 
+        //use adapter to update
         if (adapter == null)
         {
             adapter = new TaskAdapter(tasks);
@@ -89,6 +91,12 @@ public class MainActivity extends AppCompatActivity {
             adapter.notifyDataSetChanged();
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_main_menu, menu);
+        return true;
     }
 
     private class TaskHolder extends RecyclerView.ViewHolder implements  View.OnClickListener{

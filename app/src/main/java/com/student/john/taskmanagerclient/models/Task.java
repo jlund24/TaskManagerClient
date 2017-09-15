@@ -279,11 +279,7 @@ public class Task implements Comparable<Task>, Comparator<Task> {
             {
                 if (o1.getDuration() == o2.getDuration())
                 {
-                    if (o1.getTimePreference().equals(o2.getTimePreference()))
-                    {
-                        return -1;
-                    }
-                    return o1.getTimePreference().compareTo(o2.getTimePreference());
+                    return -1;
                 }
                 return (o1.getDuration() > o2.getDuration()) ? -1:1;
             }

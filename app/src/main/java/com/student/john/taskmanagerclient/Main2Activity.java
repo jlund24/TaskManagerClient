@@ -109,7 +109,7 @@ public class Main2Activity extends AppCompatActivity {
         setUpDueTimeFields();
         setUpDurationFields();
         setUpPriorityFields();
-        setUpTimePreferenceFields();
+        //setUpTimePreferenceFields();
 
 
     }
@@ -133,18 +133,18 @@ public class Main2Activity extends AppCompatActivity {
         {
             durationSpinner.setSelection( model.getDurationSpinnerPosition(editingTask.getDurationString()));
         }
-        //TODO fix bug where priority is not checked when you go to edit a task
+
         if (editingTask.getPriority() != null)
         {
             int buttonID = model.getReversePriorityButtonMapping().get(editingTask.getPriority());
             priorityRadioGroup.check( buttonID );
         }
 
-        if (editingTask.getTimePreference() != null)
-        {
-            int buttonID = model.getReverseTimePreferenceButtonMapping().get(editingTask.getTimePreference());
-            timePreferenceRadioGroup.check( buttonID );
-        }
+//        if (editingTask.getTimePreference() != null)
+//        {
+//            int buttonID = model.getReverseTimePreferenceButtonMapping().get(editingTask.getTimePreference());
+//            timePreferenceRadioGroup.check( buttonID );
+//        }
     }
 
     private void setUpDueDateFields()
@@ -206,7 +206,7 @@ public class Main2Activity extends AppCompatActivity {
                     //if it's the last option, it's the custom date one
                     if (position == getResources().getStringArray(R.array.dueDateOptions).length - 1)
                     {
-
+                        //open a time picker
                     }
                     durationClearButton.setVisibility(View.VISIBLE);
                 }
@@ -249,25 +249,25 @@ public class Main2Activity extends AppCompatActivity {
         });
     }
 
-    private void setUpTimePreferenceFields()
-    {
-        timePreferenceRadioGroup = (RadioGroup) findViewById(R.id.addEditTask1_timePreference_radioGroup);
-        timePreferenceRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                timePreferenceClearButton.setVisibility(View.VISIBLE);
-            }
-        });
-        timePreferenceClearButton = (ImageButton) findViewById(R.id.addEditTask1_timePreference_clear);
-        timePreferenceClearButton.setImageDrawable(clear_icon);
-        timePreferenceClearButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                timePreferenceRadioGroup.clearCheck();
-                timePreferenceClearButton.setVisibility(View.GONE);
-            }
-        });
-    }
+//    private void setUpTimePreferenceFields()
+//    {
+//        timePreferenceRadioGroup = (RadioGroup) findViewById(R.id.addEditTask1_timePreference_radioGroup);
+//        timePreferenceRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+//                timePreferenceClearButton.setVisibility(View.VISIBLE);
+//            }
+//        });
+//        timePreferenceClearButton = (ImageButton) findViewById(R.id.addEditTask1_timePreference_clear);
+//        timePreferenceClearButton.setImageDrawable(clear_icon);
+//        timePreferenceClearButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                timePreferenceRadioGroup.clearCheck();
+//                timePreferenceClearButton.setVisibility(View.GONE);
+//            }
+//        });
+//    }
 
     private void saveTask()
     {
@@ -293,10 +293,10 @@ public class Main2Activity extends AppCompatActivity {
         {
             params.put(Model.PRIORITY_KEY, getPrioritySelection());
         }
-        if (timePreferenceRadioGroup.getCheckedRadioButtonId() != -1)
-        {
-            params.put(Model.TIME_PREFERENCE_KEY, getTimePreferenceSelection());
-        }
+//        if (timePreferenceRadioGroup.getCheckedRadioButtonId() != -1)
+//        {
+//            params.put(Model.TIME_PREFERENCE_KEY, getTimePreferenceSelection());
+//        }
 
         if (editingTask != null)
         {
@@ -339,10 +339,10 @@ public class Main2Activity extends AppCompatActivity {
         return model.getPriorityButtonMapping().get( priorityRadioGroup.getCheckedRadioButtonId() );
     }
 
-    private String getTimePreferenceSelection()
-    {
-        return model.getTimePreferenceButtonMapping().get( timePreferenceRadioGroup.getCheckedRadioButtonId());
-    }
+//    private String getTimePreferenceSelection()
+//    {
+//        return model.getTimePreferenceButtonMapping().get( timePreferenceRadioGroup.getCheckedRadioButtonId());
+//    }
 
 
 
