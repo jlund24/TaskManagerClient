@@ -1,0 +1,2 @@
+# TaskManagerClient
+An app whose purpose is to make to-do lists actually useful. The code here right now will not do a whole lot. It DOES compile, so there's that. Tasks can be created, edited, deleted, etc. in a somewhat stable manner, but it is not pretty nor an end product. I'm currently developing, testing, and vetting wireframes for the main, actually cool things this app will eventually do. 
